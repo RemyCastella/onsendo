@@ -1,2 +1,7 @@
 5/10 ~2h
 5/11 1h
+
+Challenges:
+- I don't know the file structure
+- Liquid was hard to read (got extension)
+- I don't know variable names eg product.selected_or_first_available_variant
