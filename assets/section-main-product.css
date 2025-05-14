@@ -189,27 +189,8 @@ product-info {
   right: 1.5rem;
 }
 
-/* Task a: product add to card button styling */
-
 .product-form__submit {
   margin-bottom: 1rem;
-}
-
-.product-form__submit.button--out-of-stock {
-  background-color: red !important;
-  border-color: red;
-  color: white !important;
-}
-
-.product-form__submit.button--in-stock {
-  background-color: green;
-  border-color: green;
-  color: white;
-}
-
-.product-form__submit.button--in-stock:hover,
-.product-form__submit.button--in-stock:focus {
-  background-color: blue;
 }
 
 .product-form__submit[aria-disabled='true'] + .shopify-payment-button .shopify-payment-button__button[disabled],
