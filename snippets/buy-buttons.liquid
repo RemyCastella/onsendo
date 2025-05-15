@@ -95,11 +95,19 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+
+          {% if product.selected_or_first_available_variant.metafields.custom.size_description.value != blank %}
+            <p data-size-variant-description-text>{{ product.selected_or_first_available_variant.metafields.custom.size_description.value }}</p>
+          {% else %}
+            <p data-size-variant-description-text style="display: none;"></p>
+          {% endif %}
+
           {% if product.selected_or_first_available_variant.inventory_quantity < 5 and product.selected_or_first_available_variant.inventory_quantity > 0 %}
           <p>Low stock</p>
           {% elsif product.selected_or_first_available_variant.inventory_quantity >= 5 %}
           <p>Available!</p>
           {% endif %}
+
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}
