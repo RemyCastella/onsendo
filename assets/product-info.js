@@ -164,7 +164,6 @@ if (!customElements.get('product-info')) {
       handleUpdateProductInfo(productUrl) {
         return (html) => {
           const variant = this.getSelectedVariant(html);
-
           this.pickupAvailability?.update(variant);
           this.updateOptionValues(html);
           this.updateURL(productUrl, variant?.id);
@@ -200,6 +199,8 @@ if (!customElements.get('product-info')) {
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
             window.variantStrings.soldOut
           );
+
+          this.updateSizeVariantDescription(variant);
 
           publish(PUB_SUB_EVENTS.variantChange, {
             data: {
@@ -374,6 +375,12 @@ if (!customElements.get('product-info')) {
             current.innerHTML = updated.innerHTML;
           }
         }
+      }
+
+      updateSizeVariantDescription(variant) {
+        const descriptionElement = document.querySelector('[data-size-variant-description-text]');
+        const allVariantMetafields = JSON.parse(document.querySelector('#variant_metafield_data').textContent);
+        descriptionElement.innerHTML = allVariantMetafields[variant.id];
       }
 
       get productForm() {
